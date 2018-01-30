@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		DBB809822020E8D3004A2AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809812020E8D3004A2AF6 /* AppDelegate.swift */; };
-		DBB809842020E8D3004A2AF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809832020E8D3004A2AF6 /* ViewController.swift */; };
-		DBB809872020E8D3004A2AF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB809852020E8D3004A2AF6 /* Main.storyboard */; };
+		DBB809842020E8D3004A2AF6 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809832020E8D3004A2AF6 /* StartVC.swift */; };
 		DBB809892020E8D3004A2AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB809882020E8D3004A2AF6 /* Assets.xcassets */; };
 		DBB8098C2020E8D3004A2AF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB8098A2020E8D3004A2AF6 /* LaunchScreen.storyboard */; };
+		DBB809972020ED21004A2AF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809962020ED21004A2AF6 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DBB8097E2020E8D3004A2AF6 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB809812020E8D3004A2AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBB809832020E8D3004A2AF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DBB809862020E8D3004A2AF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBB809832020E8D3004A2AF6 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		DBB809882020E8D3004A2AF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB8098B2020E8D3004A2AF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB8098D2020E8D3004A2AF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBB809962020ED21004A2AF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,38 @@
 		DBB809802020E8D3004A2AF6 /* AudioRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				DBB809952020ED09004A2AF6 /* Views */,
+				DBB809942020ED01004A2AF6 /* Controllers */,
+				DBB809932020ECFC004A2AF6 /* Model */,
 				DBB809812020E8D3004A2AF6 /* AppDelegate.swift */,
-				DBB809832020E8D3004A2AF6 /* ViewController.swift */,
-				DBB809852020E8D3004A2AF6 /* Main.storyboard */,
 				DBB809882020E8D3004A2AF6 /* Assets.xcassets */,
 				DBB8098A2020E8D3004A2AF6 /* LaunchScreen.storyboard */,
 				DBB8098D2020E8D3004A2AF6 /* Info.plist */,
 			);
 			path = AudioRecorder;
+			sourceTree = "<group>";
+		};
+		DBB809932020ECFC004A2AF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBB809962020ED21004A2AF6 /* Constants.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DBB809942020ED01004A2AF6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBB809832020E8D3004A2AF6 /* StartVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DBB809952020ED09004A2AF6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +149,6 @@
 			files = (
 				DBB8098C2020E8D3004A2AF6 /* LaunchScreen.storyboard in Resources */,
 				DBB809892020E8D3004A2AF6 /* Assets.xcassets in Resources */,
-				DBB809872020E8D3004A2AF6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,22 +159,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBB809842020E8D3004A2AF6 /* ViewController.swift in Sources */,
+				DBB809842020E8D3004A2AF6 /* StartVC.swift in Sources */,
 				DBB809822020E8D3004A2AF6 /* AppDelegate.swift in Sources */,
+				DBB809972020ED21004A2AF6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DBB809852020E8D3004A2AF6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DBB809862020E8D3004A2AF6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DBB8098A2020E8D3004A2AF6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
