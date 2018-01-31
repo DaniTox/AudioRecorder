@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB29442520223FD00050A23A /* ListenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB29442420223FD00050A23A /* ListenVC.swift */; };
 		DBB809822020E8D3004A2AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809812020E8D3004A2AF6 /* AppDelegate.swift */; };
 		DBB809842020E8D3004A2AF6 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB809832020E8D3004A2AF6 /* StartVC.swift */; };
 		DBB809892020E8D3004A2AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB809882020E8D3004A2AF6 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB29442420223FD00050A23A /* ListenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenVC.swift; sourceTree = "<group>"; };
 		DBB8097E2020E8D3004A2AF6 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB809812020E8D3004A2AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB809832020E8D3004A2AF6 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				DBB809832020E8D3004A2AF6 /* StartVC.swift */,
+				DB29442420223FD00050A23A /* ListenVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB809842020E8D3004A2AF6 /* StartVC.swift in Sources */,
+				DB29442520223FD00050A23A /* ListenVC.swift in Sources */,
 				DBB809822020E8D3004A2AF6 /* AppDelegate.swift in Sources */,
 				DBB809972020ED21004A2AF6 /* Constants.swift in Sources */,
 			);

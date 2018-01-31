@@ -24,6 +24,7 @@ class StartVC: UIViewController {
         didSet {
             if isRecording == true {
                 recordButton?.setTitle("Sto registrando...", for: .normal)
+                tableView?.layer.borderColor = UIColor.red.cgColor
                 
                 let filePath = getDir()
                 let settings = [AVFormatIDKey : Int(kAudioFormatMPEG4AAC), AVNumberOfChannelsKey : 1, AVSampleRateKey : 12000, AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue]
@@ -38,16 +39,19 @@ class StartVC: UIViewController {
                 }
                 
             } else {
+                tableView?.layer.borderColor = UIColor.green.cgColor
                 recordSession.stop()
                 recordButton?.setTitle("Registra", for: .normal)
             }
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-
+        navigationItem.title = "Home"
+        
         setViews()
         
         AVAudioSession.sharedInstance().requestRecordPermission { (perm) in
@@ -133,11 +137,14 @@ extension StartVC : AVAudioRecorderDelegate {
         alert.addAction(UIAlertAction(title: "Conferma", style: .default, handler: { (action) in
             let textOfAlert = alert.textFields![0].text!
             let origin = self.getDir()
-            let dest = self.getDocDir().appendingPathComponent(textOfAlert.isEmpty ? self.getStringRandom() : textOfAlert).appendingPathExtension("m4a")
+            var dest = self.getDocDir().appendingPathComponent(textOfAlert.isEmpty ? self.getStringRandom() : textOfAlert).appendingPathExtension("m4a")
             do {
                 try FileManager.default.moveItem(at: origin, to: dest)
                 self.getFiles()
             } catch {
+                dest = self.getDocDir().appendingPathComponent(self.getStringRandom()).appendingPathExtension("m4a")
+                try? FileManager.default.moveItem(at: origin, to: dest)
+                self.getFiles()
                 print("ERRORE FILEMAN : \(error)")
             }
         }))
@@ -153,24 +160,6 @@ extension StartVC : AVAudioRecorderDelegate {
 
 extension StartVC {
     func setViews() {
-        tableView = UITableView()
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.backgroundColor = .clear
-        tableView?.tableFooterView = UIView()
-        view.addSubview(tableView!)
-        
-        tableView?.anchor(top: view.topAnchor,
-                          leading: view.leadingAnchor,
-                          bottom: view.bottomAnchor,
-                          trailing: view.trailingAnchor,
-                          padding: .init(top: 100, left: 0, bottom: 200, right: 0),
-                          size: .zero)
-        
-        
-        
-        
-        
         recordButton = UIButton()
         recordButton?.addTarget(self, action: #selector(recButtonTapped), for: .touchUpInside)
         recordButton?.layer.masksToBounds = true
@@ -184,6 +173,31 @@ extension StartVC {
                              trailing: view.trailingAnchor,
                              padding: .init(top: 0, left: 20, bottom: 50, right: 20),
                              size: .zero)
+        
+        
+        tableView = UITableView()
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.backgroundColor = .clear
+        tableView?.tableFooterView = UIView()
+        tableView?.layer.masksToBounds = true
+        tableView?.layer.cornerRadius = 20
+        tableView?.layer.borderWidth = 10
+        tableView?.layer.borderColor = UIColor.green.cgColor
+        view.addSubview(tableView!)
+        
+        tableView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          leading: view.leadingAnchor,
+                          bottom: recordButton?.topAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: .init(top: 20, left: 0, bottom: 20, right: 0),
+                          size: .zero)
+        
+        
+        
+        
+        
+        
     }
     
     @objc func recButtonTapped() {
