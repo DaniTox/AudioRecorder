@@ -26,13 +26,23 @@ class StartVC: UIViewController {
                 tableView?.layer.borderColor = UIColor.red.cgColor
                 
                 let filePath = getDir()
-                let settings = [AVFormatIDKey : Int(kAudioFormatMPEG4AAC), AVNumberOfChannelsKey : 1, AVSampleRateKey : 12000, AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue]
+                print(filePath.absoluteString)
+                let settings = [AVFormatIDKey : Int(kAudioFormatMPEG4AAC), AVNumberOfChannelsKey : 1, AVSampleRateKey : 12000, AVEncoderAudioQualityKey : AVAudioQuality.high.rawValue]
                 
                 do {
                     recordSession = try AVAudioRecorder(url: filePath, settings: settings)
                     recordSession.delegate = self
                     recordSession.prepareToRecord()
-                    recordSession.record()
+                    if recordSession.record() == false {
+                        print("ERROR STARTING RECORDING")
+                        print("TRYING AGAIN...")
+                        if recordSession.record() == false {
+                            print("FAILED AGAIN...")
+                        }
+                        else {
+                            print("NOW IT WORKS")
+                        }
+                    }
                 } catch {
                     print("ERRORE: \(error)")
                 }
@@ -52,11 +62,7 @@ class StartVC: UIViewController {
         navigationItem.title = "Home"
         
         setViews()
-        
-        AVAudioSession.sharedInstance().requestRecordPermission { (perm) in
-            if perm { print("YEAH") }
-        }
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

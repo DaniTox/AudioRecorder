@@ -28,6 +28,7 @@ class ListenVC: UIViewController {
                         self.audioPlayer = try AVAudioPlayer(contentsOf: url)
                         self.audioPlayer?.delegate = self
                         self.audioPlayer?.currentTime = TimeInterval(self.slider.value)
+                        self.audioPlayer?.volume = 1.0
                         self.audioPlayer?.prepareToPlay()
                         self.audioPlayer?.play()
                         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadControlsTime), userInfo: nil, repeats: true)
@@ -78,7 +79,6 @@ class ListenVC: UIViewController {
         }
     }
     @objc private func loadControlsTime() {
-        print("Asd")
         slider.value = Float(audioPlayer?.currentTime ?? 0)
         
         let secondsD = Int(audioPlayer?.duration ?? 0)
