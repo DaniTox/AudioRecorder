@@ -123,6 +123,14 @@ extension StartVC : UITableViewDelegate, UITableViewDataSource {
         return 70
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ListenVC()
+        let file = files[indexPath.row]
+        let url = getDocDir().appendingPathComponent(file)
+        vc.fileSelected = url
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension StartVC : AVAudioRecorderDelegate {
@@ -182,7 +190,7 @@ extension StartVC {
         tableView?.tableFooterView = UIView()
         tableView?.layer.masksToBounds = true
         tableView?.layer.cornerRadius = 20
-        tableView?.layer.borderWidth = 10
+        tableView?.layer.borderWidth = 1
         tableView?.layer.borderColor = UIColor.green.cgColor
         view.addSubview(tableView!)
         
