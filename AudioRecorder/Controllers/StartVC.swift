@@ -62,7 +62,6 @@ class StartVC: UIViewController {
         navigationItem.title = "Home"
         
         setViews()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,7 +132,7 @@ extension StartVC : UITableViewDelegate, UITableViewDataSource {
         let file = files[indexPath.row]
         let url = getDocDir().appendingPathComponent(file)
         vc.fileSelected = url
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.show(vc, sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -210,6 +209,7 @@ extension StartVC {
         tableView?.layer.cornerRadius = 20
         tableView?.layer.borderWidth = 1
         tableView?.layer.borderColor = UIColor.green.cgColor
+        
         view.addSubview(tableView!)
         
         tableView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,

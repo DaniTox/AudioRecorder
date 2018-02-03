@@ -59,7 +59,7 @@ class ListenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadViews()
-        
+        navigationItem.title = "Condividi"
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,7 +108,7 @@ class ListenVC: UIViewController {
 extension ListenVC {
     func loadViews() {
         let containerView = UIView()
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = UIColor.gray
         containerView.alpha = 0.3
         containerView.layer.masksToBounds = true
         containerView.layer.cornerRadius = 15
@@ -208,6 +208,18 @@ extension ListenVC {
                       trailing: rightLabel.leadingAnchor,
                       padding: .init(top: 0, left: 5, bottom: 20, right: 5),
                       size: .zero)
+        
+        
+        
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "finder-icon"))
+        view.addSubview(imageView)
+        imageView.anchor(top: shareButton.bottomAnchor,
+                         leading: nil,
+                         bottom: nil,
+                         trailing: nil,
+                         padding: .init(top: 65, left: 0, bottom: 0, right: 0),
+                         size: .init(width: 256, height: 256))
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
     }
 }
