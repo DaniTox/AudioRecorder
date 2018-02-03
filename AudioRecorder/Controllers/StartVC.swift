@@ -17,8 +17,7 @@ class StartVC: UIViewController {
     var recordSession : AVAudioRecorder!
     
     var files : [String] = []
-    
-    
+
     
     var isRecording : Bool = false {
         didSet {
@@ -131,6 +130,19 @@ extension StartVC : UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+               try FileManager.default.removeItem(at: getDocDir().appendingPathComponent(files[indexPath.row]))
+            } catch {
+                print("ERRORE RIMOZIONE FILE: \(error)")
+            }
+            files.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+    }
+    
 }
 
 extension StartVC : AVAudioRecorderDelegate {
@@ -195,9 +207,9 @@ extension StartVC {
         view.addSubview(tableView!)
         
         tableView?.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          leading: view.leadingAnchor,
+                          leading: view.safeAreaLayoutGuide.leadingAnchor,
                           bottom: recordButton?.topAnchor,
-                          trailing: view.trailingAnchor,
+                          trailing: view.safeAreaLayoutGuide.trailingAnchor,
                           padding: .init(top: 20, left: 0, bottom: 20, right: 0),
                           size: .zero)
         
