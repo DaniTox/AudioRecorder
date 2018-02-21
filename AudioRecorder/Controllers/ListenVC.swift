@@ -18,6 +18,7 @@ class ListenVC: UIViewController {
     var slider : UISlider!
     var leftLabel : UILabel!
     var rightLabel : UILabel!
+    var titleLabel : UILabel!
     
     var isPlaying : Bool = false {
         didSet {
@@ -58,6 +59,7 @@ class ListenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         loadViews()
         navigationItem.title = "Condividi"
     }
@@ -96,6 +98,7 @@ class ListenVC: UIViewController {
     @objc func shareTapped() {
         guard let item = fileSelected else { return }
         let shareVC = UIActivityViewController(activityItems: [item], applicationActivities: nil)
+        shareVC.popoverPresentationController?.sourceView = self.titleLabel
         present(shareVC, animated: true, completion: nil)
     }
 
@@ -136,7 +139,7 @@ extension ListenVC {
         playButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: .zero, size: .init(width: 70, height: 50))
         
         
-        let titleLabel = UILabel()
+        titleLabel = UILabel()
         titleLabel.text = fileSelected?.lastPathComponent
         titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         titleLabel.textColor = .white

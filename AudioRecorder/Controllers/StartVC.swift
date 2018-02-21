@@ -209,6 +209,7 @@ extension StartVC {
         tableView?.layer.cornerRadius = 20
         tableView?.layer.borderWidth = 1
         tableView?.layer.borderColor = UIColor.green.cgColor
+        tableView?.separatorInset = .zero
         
         view.addSubview(tableView!)
         
